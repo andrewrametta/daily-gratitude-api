@@ -5,6 +5,7 @@ const cors = require("cors");
 const { CLIENT_ORIGIN } = require("./config");
 const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
+const daysRouter = require("./days/days-router");
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use(
   })
 );
 app.use(helmet());
+
+app.use("/api/days", daysRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
