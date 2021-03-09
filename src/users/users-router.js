@@ -20,7 +20,7 @@ usersRouter
   })
   .post(jsonParser, (req, res) => {
     const { username, password } = req.body;
-    const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[!@#$%^&])[\S]+/;
+    const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/;
     for (const field of ["username", "password"]) {
       if (!req.body[field]) {
         return res.status(400).json({
@@ -46,7 +46,17 @@ usersRouter
           error: `Username already exists`,
         });
       }
-      res.status(201).json(req.body);
+
+      return UsersService.hashPassword(password).then((hashedPassword) => {
+        const newUser = {
+          username,
+          password: hashedPassword,
+        };
+
+        return UsersService.insertUser(knexInstance, newUser).then((user) => {
+          res.status(201).json(serializeUser(user));
+        });
+      });
     });
   });
 
