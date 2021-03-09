@@ -15,3 +15,4 @@ INSERT INTO days
     (4,1,'2021-03-06 00:00:00','A roof over my head and a windy home.','Windy water to drink','A windy vacation with my family'),
     (5,1,'2021-03-06 00:00:00','A roof over my head and a chilly home.','Chilly water to drink','A chilly vacation with my family'),
     (6,1,'2021-03-06 00:00:00','A roof over my head and a sunny home.','Sunny water to drink','A sunny vacation with my family');
+ALTER SEQUENCE "days_id_seq" RESTART WITH 7;
