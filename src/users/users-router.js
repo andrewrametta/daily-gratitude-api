@@ -1,4 +1,3 @@
-const { json } = require("express");
 const express = require("express");
 const xss = require("xss");
 const usersRouter = express.Router();
