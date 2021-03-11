@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const xss = require("xss");
 const DaysService = require("./days-service");
+const { requireAuth } = require("../middleware/jwt-auth");
 
 const daysRouter = express.Router();
 const jsonParser = express.json();
@@ -33,14 +34,16 @@ daysRouter.route("/").post(jsonParser, (req, res, next) => {
 });
 
 //create a get for all days where user id
-daysRouter.route("/:user_id").get((req, res, next) => {
-  const knexInstance = req.app.get("db");
-  const user_id = req.params.user_id;
-  DaysService.getDaysByUserId(knexInstance, user_id)
-    .then((days) => {
-      res.json(days.map(serializeDay));
-    })
-    .catch(next);
-});
+daysRouter.route("/:user_id").get(
+  /*requireAuth,*/ (req, res, next) => {
+    const knexInstance = req.app.get("db");
+    const user_id = req.params.user_id;
+    DaysService.getDaysByUserId(knexInstance, user_id)
+      .then((days) => {
+        res.json(days.map(serializeDay));
+      })
+      .catch(next);
+  }
+);
 
 module.exports = daysRouter;

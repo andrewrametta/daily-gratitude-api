@@ -1,8 +1,8 @@
 const express = require("express");
 const xss = require("xss");
 const usersRouter = express.Router();
-const jsonParser = express.json();
 const UsersService = require("./users-service");
+const { requireAuth } = require("../middleware/jwt-auth");
 
 const serializeUser = (user) => {
   return {
@@ -17,7 +17,10 @@ usersRouter
     knexInstance = req.app.get("db");
     next();
   })
-  .post(jsonParser, (req, res) => {
+  .get(requireAuth, (req, res) => {
+    res.json(serializeUser(req.user));
+  })
+  .post((req, res) => {
     const { username, password } = req.body;
     const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/;
     for (const field of ["username", "password"]) {
