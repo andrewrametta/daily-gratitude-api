@@ -33,7 +33,11 @@ authRouter
               error: "Incorrect username or password",
             });
           }
-          res.send("ok");
+          const subject = dbUser.username;
+          const payload = { user_id: dbUser.user_id };
+          res.send({
+            authToken: AuthService.createJwt(subject, payload),
+          });
         }
       );
     });
