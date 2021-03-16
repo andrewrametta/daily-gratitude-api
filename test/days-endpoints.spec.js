@@ -28,14 +28,11 @@ describe("Day Endpoints", function () {
       .post("/api/users")
       .send(user)
       .then((res) => {
-        console.log(res.body);
         return supertest(app)
           .post("/api/auth/login")
           .send(user)
           .then((res2) => {
             authToken = res2.body.authToken;
-            console.log(authToken);
-            console.log(res2.body);
           });
       });
   });
