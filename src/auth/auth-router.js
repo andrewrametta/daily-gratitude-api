@@ -1,5 +1,4 @@
 const express = require("express");
-const { restart } = require("nodemon");
 const xss = require("xss");
 const authRouter = express.Router();
 const AuthService = require("./auth-service");
