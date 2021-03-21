@@ -12,9 +12,9 @@ const serializeDay = (day) => ({
   text2: xss(day.text2),
   text3: xss(day.text3),
 });
-//create a post for new day
 daysRouter
   .route("/")
+  // require Auth used in all endpoints for auth token authorization
   .get(requireAuth, (req, res, next) => {
     const knexInstance = req.app.get("db");
 
