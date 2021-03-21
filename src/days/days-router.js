@@ -28,7 +28,6 @@ daysRouter
   .post(requireAuth, (req, res, next) => {
     const { text1, text2, text3 } = req.body;
     const newDay = { text1, text2, text3 };
-    //const knexInstance = req.app.get("db");
 
     for (const [key, value] of Object.entries(newDay))
       if (value == null)
