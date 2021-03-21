@@ -1,30 +1,50 @@
-# Express Boilerplate!
+# Daily Gratitude - API
 
-This is a boilerplate project used for starting new projects!
+A daily gratitude journal.
 
-## Set up
+Live version: (https://daily-gratitude-app-andrewrametta.vercel.app/)
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+## Introduction 
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+If you are in need of a convenient  way to practice gratitude daily. 
 
-## Scripts
+Create a profile and practice gratitude daily. Add a new entry each day with three things you are grateful for. Use the dashboard to look at all of your journal entries.
 
-Start the application `npm start`
+## Technologies
 
-Start nodemon for the application `npm run dev`
+* Node and Express 
+  * Authentication via JWT 
+  * RESTful API 
+* Testing 
+  * Supertest (integration) 
+  * Mocha and Chai (unit)
+* Database 
+  * Postgres
+  * Knex.js 
+  
+## Production 
 
-Run the tests `npm test`
+Deployed via Heroku
 
-## Deploying
+## API Endpoints
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's main branch.
+### Users Router
+```
+- /api/users 
+- - GET - gets user that matches 
+- - POST - creates a new user
+```
 
-## Readme
+### Days Router
+```
+- /api/days
+- - GET - gets all days
+- - POST - creates a new day 
+```
 
-Once you deploy this project, please feel free to update this README file
+
+### Auth Router
+```
+- /api/auth/login
+- - POST - creates auth token
+```
