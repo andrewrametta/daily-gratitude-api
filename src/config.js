@@ -7,4 +7,5 @@ module.exports = {
     process.env.TEST_DATABASE_URL ||
     "postgresql://Metta@localhost/daily_gratitude_test",
   JWT_SECRET: process.env.JWT_SECRET || "daily-gratitude-jwt",
+  CLIENT_ORIGIN: process.env.CLIENT_ORIGIN || "http://localhost:8000",
 };
