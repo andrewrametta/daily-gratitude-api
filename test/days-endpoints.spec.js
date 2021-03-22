@@ -55,18 +55,21 @@ describe("Day Endpoints", function () {
       it("responds with 200 and days", () => {
         const expectedDays = [
           {
+            id: 1,
             date_created: "2021-03-16T13:30:06.300Z",
             text1: "I am grateful for this test",
             text2: "I am grateful for this project",
             text3: "I am greatful for thinkful",
           },
           {
+            id: 2,
             date_created: "2021-03-16T13:30:06.300Z",
             text1: "I am grateful for this second test",
             text2: "I am grateful for this second project",
             text3: "I am greatful for thinkful",
           },
           {
+            id: 3,
             date_created: "2021-03-16T13:30:06.300Z",
             text1: "I am grateful for this last test",
             text2: "I am grateful for this last project",

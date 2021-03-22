@@ -7,6 +7,7 @@ const { requireAuth } = require("../middleware/jwt-auth");
 const daysRouter = express.Router();
 
 const serializeDay = (day) => ({
+  id: day.id,
   date_created: day.date_created,
   text1: xss(day.text1),
   text2: xss(day.text2),
