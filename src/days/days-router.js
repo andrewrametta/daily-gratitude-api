@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const xss = require("xss");
 const DaysService = require("./days-service");
 const { requireAuth } = require("../middleware/jwt-auth");

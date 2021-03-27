@@ -1,3 +1,4 @@
+equire("dotenv").config();
 const knex = require("knex");
 const app = require("./app");
 
